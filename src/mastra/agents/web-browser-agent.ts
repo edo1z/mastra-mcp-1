@@ -3,7 +3,7 @@ import { MCPConfiguration } from '@mastra/mcp';
 import { openai } from '@ai-sdk/openai';
 
 // MCPの設定
-const mcp = new MCPConfiguration({
+export const mcp = new MCPConfiguration({
   servers: {
     playwright: {
       command: 'npx',
@@ -25,3 +25,8 @@ export const webBrowserAgent = new Agent({
   tools: await mcp.getTools(),
   instructions: 'あなたはウェブサイトにアクセスして情報を取得するエージェントです。'
 });
+
+// MCPの接続を閉じる関数
+export const disconnect = async () => {
+  await mcp.disconnect();
+};

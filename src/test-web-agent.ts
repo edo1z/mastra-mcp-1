@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { mastra } from './mastra/index';
+import { disconnect } from './mastra/agents/web-browser-agent';
 
 async function main() {
   try {
@@ -11,6 +12,10 @@ async function main() {
     if (error instanceof Error) {
       console.error('エラーの詳細:', error.stack);
     }
+  } finally {
+    // MCPの接続を閉じる
+    await disconnect();
+    console.log('MCPの接続を閉じました');
   }
 }
 
