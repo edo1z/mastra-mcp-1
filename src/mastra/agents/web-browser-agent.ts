@@ -1,43 +1,27 @@
 import { Agent } from '@mastra/core/agent';
-import { playwrightTools } from '../tools/playwright-mcp';
+import { MCPConfiguration } from '@mastra/mcp';
 import { openai } from '@ai-sdk/openai';
 
+// MCPの設定
+const mcp = new MCPConfiguration({
+  servers: {
+    playwright: {
+      command: 'npx',
+      args: [
+        '@playwright/mcp@latest',
+        '--headless'
+      ],
+      // 必要に応じてオプションを追加
+      // '--headless' (ヘッドレスモード)
+      // '--vision' (スクリーンショットベースの操作)
+    },
+  },
+});
+
+// 直接Agentインスタンスを作成
 export const webBrowserAgent = new Agent({
   name: 'WebBrowserAgent',
-  description: 'ウェブサイトにアクセスして情報を取得するエージェント',
-  tools: [playwrightTools.accessWebsiteAndScreenshot],
   model: openai('gpt-4o-mini'),
-  execute: async ({ url = 'https://logicky.com', run }) => {
-    try {
-      console.log(`${url}にアクセスします...`);
-
-      // ウェブサイトにアクセスしてスクリーンショットを撮影
-      const result = await run('accessWebsiteAndScreenshot', {
-        url,
-        outputPath: './screenshot.png'
-      });
-
-      if (result.success) {
-        return {
-          result: {
-            message: '正常にウェブサイトにアクセスしてスクリーンショットを撮影しました。',
-            screenshotPath: result.screenshotPath
-          }
-        };
-      }
-
-      return {
-        result: {
-          error: result.message
-        }
-      };
-    } catch (error) {
-      console.error('エージェント実行エラー:', error);
-      return {
-        result: {
-          error: `エラーが発生しました: ${error.message}`
-        }
-      };
-    }
-  }
+  tools: await mcp.getTools(),
+  instructions: 'あなたはウェブサイトにアクセスして情報を取得するエージェントです。'
 });
