@@ -14,6 +14,9 @@ importers:
       '@mastra/core':
         specifier: ^0.8.2
         version: 0.8.2(react@19.1.0)
+      '@mastra/mcp':
+        specifier: ^0.3.9
+        version: 0.3.9(react@19.1.0)
       '@playwright/mcp':
         specifier: ^0.0.10
         version: 0.0.10(zod@3.24.2)
@@ -567,6 +570,9 @@ packages:
 
   '@mastra/deployer@0.2.8':
     resolution: {integrity: sha512-aKz1vXmvEWtv4ToIHoXemWROew8LrSgAM9vRckKbCxRg0tc+snpetJ3l7OD58r+VxUhiBWvEnL7CF1bNHcgFJg==}
+
+  '@mastra/mcp@0.3.9':
+    resolution: {integrity: sha512-NFvrk7oAKYmFemGih4aarNBplbQr0fF99Cb8f3iK3Pe78DaWQMU+FDtsiysvG+TXA/guS2vDt69PFagdI7y6vg==}
 
   '@mastra/server@1.0.2':
     resolution: {integrity: sha512-8s3uHgsqVkvqAWx0+F9Rx1/riUljGCt5o4iTySzv3UHmePCQ/KE+Sbk05XyikrKEV7t/tF6PPVH0AfO9HxbQEA==}
@@ -1751,6 +1757,9 @@ packages:
   date-fns@3.6.0:
     resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
 
+  date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
+
   dateformat@4.6.3:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}
 
@@ -1907,6 +1916,10 @@ packages:
   execa@9.5.2:
     resolution: {integrity: sha512-EHlpxMCpHWSAh1dgS6bVeoLAXGnJNdR93aabr4QCGbzOM73o5XmRfM/e5FUqsw3aagP8S8XEWUWFAxnRBnAF0Q==}
     engines: {node: ^18.19.0 || >=20.5.0}
+
+  exit-hook@4.0.0:
+    resolution: {integrity: sha512-Fqs7ChZm72y40wKjOFXBKg7nJZvQJmewP5/7LtePDdnah/+FH9Hp5sgMujSCMPXlxOAW2//1jrW9pnsY7o20vQ==}
+    engines: {node: '>=18'}
 
   express-rate-limit@7.5.0:
     resolution: {integrity: sha512-eB5zbQh5h+VenMPM3fh+nw1YExi5nMr6HUCR62ELSP11huvxm/Uir1H1QEyTkk5QX6A58pX6NmaTMceKZ0Eodg==}
@@ -2985,6 +2998,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
@@ -3984,6 +4001,33 @@ snapshots:
       - react
       - supports-color
       - typescript
+      - utf-8-validate
+      - valibot
+      - zod-openapi
+
+  '@mastra/mcp@0.3.9(react@19.1.0)':
+    dependencies:
+      '@mastra/core': 0.8.2(react@19.1.0)
+      '@modelcontextprotocol/sdk': 1.9.0
+      date-fns: 4.1.0
+      exit-hook: 4.0.0
+      uuid: 11.1.0
+    transitivePeerDependencies:
+      - '@hono/arktype-validator'
+      - '@hono/effect-validator'
+      - '@hono/typebox-validator'
+      - '@hono/valibot-validator'
+      - '@hono/zod-validator'
+      - '@sinclair/typebox'
+      - '@valibot/to-json-schema'
+      - arktype
+      - aws-crt
+      - bufferutil
+      - effect
+      - encoding
+      - openapi-types
+      - react
+      - supports-color
       - utf-8-validate
       - valibot
       - zod-openapi
@@ -5473,6 +5517,8 @@ snapshots:
 
   date-fns@3.6.0: {}
 
+  date-fns@4.1.0: {}
+
   dateformat@4.6.3: {}
 
   debug@4.3.1:
@@ -5620,6 +5666,8 @@ snapshots:
       signal-exit: 4.1.0
       strip-final-newline: 4.0.0
       yoctocolors: 2.1.1
+
+  exit-hook@4.0.0: {}
 
   express-rate-limit@7.5.0(express@5.1.0):
     dependencies:
@@ -6754,6 +6802,8 @@ snapshots:
   use-sync-external-store@1.5.0(react@19.1.0):
     dependencies:
       react: 19.1.0
+
+  uuid@11.1.0: {}
 
   uuid@9.0.1: {}
 
