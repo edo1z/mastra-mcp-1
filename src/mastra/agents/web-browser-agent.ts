@@ -11,14 +11,11 @@ export const mcp = new MCPConfiguration({
         '@playwright/mcp@latest',
         '--headless'
       ],
-      // 必要に応じてオプションを追加
-      // '--headless' (ヘッドレスモード)
-      // '--vision' (スクリーンショットベースの操作)
     },
   },
 });
 
-// 直接Agentインスタンスを作成
+// Agentインスタンスを作成
 export const webBrowserAgent = new Agent({
   name: 'WebBrowserAgent',
   model: openai('gpt-4o-mini'),

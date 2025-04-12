@@ -13,7 +13,6 @@ async function main() {
       console.error('エラーの詳細:', error.stack);
     }
   } finally {
-    // MCPの接続を閉じる
     await disconnect();
     console.log('MCPの接続を閉じました');
   }
