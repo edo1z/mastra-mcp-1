@@ -9,7 +9,7 @@ export const mcp = new MCPConfiguration({
       command: 'npx',
       args: [
         '@playwright/mcp@latest',
-        '--headless'
+        // '--headless'
       ],
     },
   },
@@ -18,7 +18,7 @@ export const mcp = new MCPConfiguration({
 // Agentインスタンスを作成
 export const webBrowserAgent = new Agent({
   name: 'WebBrowserAgent',
-  model: openai('gpt-4o-mini'),
+  model: openai('gpt-4o'),
   tools: await mcp.getTools(),
   instructions: 'あなたはウェブサイトにアクセスして情報を取得するエージェントです。'
 });
